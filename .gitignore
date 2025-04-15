@@ -10,4 +10,3 @@ env/
 *.egg-info/
 dist/
 build/" > .gitignore
-
