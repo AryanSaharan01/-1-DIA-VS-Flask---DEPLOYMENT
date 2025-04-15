@@ -11,7 +11,7 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'  # Needed for session
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "defaultfallbacksecret")
 
 # SMTP_SERVER = "smtp.gmail.com" 
 # SMTP_PORT = 587
@@ -101,7 +101,7 @@ def get_db_connection():
             host=os.getenv("MYSQL_HOST", "localhost"),
             user=os.getenv("MYSQL_USER", "root"),
             password=os.getenv("MYSQL_PASSWORD", ""),
-            database=os.getenv("MYSQL_DB", "dia_vs")
+            database=os.getenv("MYSQL_DB", "sql12773418")
         )
         return db
     except Error as e:
