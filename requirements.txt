@@ -1,0 +1,9 @@
+Flask
+mysql-connector-python
+smtplib3  # <-- Technically optional, but listed for clarity
+email-validator
+gunicorn  # if you’re using this on Render
+waitress  # if you prefer this instead of gunicorn
+python-dotenv  # to manage secrets via .env
+requests  # for making HTTP requests
+beautifulsoup4  # for parsing HTML content

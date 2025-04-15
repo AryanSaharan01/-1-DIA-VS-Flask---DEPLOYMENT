@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../static/result.css">
+</head>
+
+<body>
+  <div class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </div>
+  <div class="wave"></div>
+
+  <div class="container">
+    <!-- Simple button to redirect to index -->
+    <div class="logo-btn-container">
+      <a href="/" class="simple-logo-btn">
+        <span>DIA Club</span>
+      </a>
+    </div>
+
+    <h1>Election Results</h1>
+
+    <!-- Results Summary -->
+    <div class="results-summary glass-card">
+      <h2>Summary</h2>
+      <p>Total Candidates: {{ total_candidates }}</p>
+      <p>Total Votes Cast: {{ "{:,}".format(total_votes) }}</p>
+    </div>
+
+    <!-- Results Table -->
+    <div class="table-container glass-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Details</th>
+            <th>Votes</th>
+            <th>Percentage</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for candidate in candidates %}
+          <tr>
+            <td>{{ candidate.name }}</td>
+            <td>{{ candidate.brief }}</td>
+            <td>{{ "{:,}".format(candidate.vote_count) }}</td>
+            <td>{{ candidate.percentage }}%</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <!-- <footer class="footer">
+    <p>&copy; 2025 DIA Club of K.R. Mangalam University. All Rights Reserved.</p>
+  </footer> -->
+
+  <script>
+    // Theme Toggle
+    function toggleTheme() {
+      document.body.classList.toggle('dark-theme');
+      const themeIcon = document.querySelector('.theme-toggle-btn i');
+
+      if (document.body.classList.contains('dark-theme')) {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // Check for saved theme preference
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-theme');
+      const themeIcon = document.querySelector('.theme-toggle-btn i');
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    }
+  </script>
+</body>
+</html>
